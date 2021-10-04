@@ -7,5 +7,6 @@ namespace MPChat.Types.Models
         public int Id { get; set; }
         
         public IEnumerable<GroupMembers> GroupMembers { get; set; }
+        public IEnumerable<User> Members { get; set; }
     }
 }

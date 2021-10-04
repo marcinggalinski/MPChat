@@ -47,6 +47,9 @@ namespace MPChat.DataAccess.DbContexts
 
             // indexes
             user.HasIndex(u => u.EmailAddress).IsUnique();
+            
+            // ignore
+            user.Ignore(u => u.Groups);
         }
 
         private void SetUpGroupsTable(ModelBuilder modelBuilder)
@@ -61,6 +64,9 @@ namespace MPChat.DataAccess.DbContexts
             
             // props
             group.Property(g => g.Name).IsRequired();
+            
+            // ignore
+            group.Ignore(g => g.Memebers);
         }
 
         private void SetUpGroupMembersTable(ModelBuilder modelBuilder)
