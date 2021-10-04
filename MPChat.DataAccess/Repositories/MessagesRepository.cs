@@ -12,32 +12,38 @@ namespace MPChat.DataAccess.Repositories
         {
             _dbContext = dbContext;
         }
-        
+
         public Message Get(int id)
         {
             var message = _dbContext.Messages.SingleOrDefault(m => m.Id == id);
             if (message is null)
                 return null;
-            
+
             if (message.UserId is not null)
-                _dbContext.Entry(message).Reference(m => m.User).Load();
+                _dbContext.Entry(message)
+                    .Reference(m => m.User)
+                    .Load();
             else
-                _dbContext.Entry(message).Reference(m => m.Group).Load();
+                _dbContext.Entry(message)
+                    .Reference(m => m.Group)
+                    .Load();
 
             return message;
         }
 
         public Message Add(Message entity)
         {
-            var result = _dbContext.Messages.Add(entity).Entity;
+            var result = _dbContext.Messages.Add(entity)
+                .Entity;
             _dbContext.SaveChanges();
-            
+
             return result;
         }
 
         public Message Update(Message entity)
         {
-            var result = _dbContext.Messages.Update(entity).Entity;
+            var result = _dbContext.Messages.Update(entity)
+                .Entity;
             _dbContext.SaveChanges();
 
             return result;
@@ -45,7 +51,8 @@ namespace MPChat.DataAccess.Repositories
 
         public Message Delete(Message entity)
         {
-            var result = _dbContext.Messages.Remove(entity).Entity;
+            var result = _dbContext.Messages.Remove(entity)
+                .Entity;
             _dbContext.SaveChanges();
 
             return result;
