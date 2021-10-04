@@ -16,4 +16,8 @@
       <Folder Include="Controllers" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\MPChat.Types\MPChat.Types.csproj" />
+    </ItemGroup>
+
 </Project>

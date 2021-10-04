@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using MPChat.Types.Options;
 
 namespace MPChat.WebApi
 {
@@ -22,6 +23,8 @@ namespace MPChat.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddMicrosoftIdentityWebApi(Configuration.GetSection("AzureAdB2C"));
+
+            services.Configure<ConnectionStringsOptions>(Configuration.GetSection(ConnectionStringsOptions.OptionName));
 
             services.AddControllers();
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo { Title = "MPChat.WebApi", Version = "v1" }); });

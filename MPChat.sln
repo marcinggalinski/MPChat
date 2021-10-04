@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MPChat.WebApi", "MPChat.WebApi\MPChat.WebApi.csproj", "{065CD162-2156-4B92-99E9-6F969F4377A4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MPChat.DataAccess", "MPChat.DataAccess\MPChat.DataAccess.csproj", "{F6E71196-ADBF-4109-9488-B28367DEF87E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MPChat.Types", "MPChat.Types\MPChat.Types.csproj", "{74296871-3DDD-4336-98C6-09CC7394CBC4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{065CD162-2156-4B92-99E9-6F969F4377A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{065CD162-2156-4B92-99E9-6F969F4377A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{065CD162-2156-4B92-99E9-6F969F4377A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6E71196-ADBF-4109-9488-B28367DEF87E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6E71196-ADBF-4109-9488-B28367DEF87E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6E71196-ADBF-4109-9488-B28367DEF87E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6E71196-ADBF-4109-9488-B28367DEF87E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74296871-3DDD-4336-98C6-09CC7394CBC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74296871-3DDD-4336-98C6-09CC7394CBC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74296871-3DDD-4336-98C6-09CC7394CBC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74296871-3DDD-4336-98C6-09CC7394CBC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
