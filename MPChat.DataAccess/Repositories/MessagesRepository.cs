@@ -24,14 +24,31 @@ namespace MPChat.DataAccess.Repositories
             else
                 _dbContext.Entry(message).Reference(m => m.Group).Load();
 
-
             return message;
         }
 
-        public Message Add(Message entity) => _dbContext.Messages.Add(entity).Entity;
+        public Message Add(Message entity)
+        {
+            var result = _dbContext.Messages.Add(entity).Entity;
+            _dbContext.SaveChanges();
+            
+            return result;
+        }
 
-        public Message Update(Message entity) => _dbContext.Messages.Update(entity).Entity;
+        public Message Update(Message entity)
+        {
+            var result = _dbContext.Messages.Update(entity).Entity;
+            _dbContext.SaveChanges();
 
-        public Message Delete(Message entity) => _dbContext.Messages.Remove(entity).Entity;
+            return result;
+        }
+
+        public Message Delete(Message entity)
+        {
+            var result = _dbContext.Messages.Remove(entity).Entity;
+            _dbContext.SaveChanges();
+
+            return result;
+        }
     }
 }
