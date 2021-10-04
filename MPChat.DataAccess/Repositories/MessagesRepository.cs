@@ -4,11 +4,11 @@ using System.Linq;
 
 namespace MPChat.DataAccess.Repositories
 {
-    public class MessageRepository : IRepository<Message>
+    public class MessagesRepository : IRepository<Message>
     {
         private readonly SqlServerDbContext _dbContext;
 
-        public MessageRepository(SqlServerDbContext dbContext)
+        public MessagesRepository(SqlServerDbContext dbContext)
         {
             _dbContext = dbContext;
         }

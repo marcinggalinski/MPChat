@@ -66,7 +66,7 @@ namespace MPChat.DataAccess.DbContexts
             group.Property(g => g.Name).IsRequired();
             
             // ignore
-            group.Ignore(g => g.Memebers);
+            group.Ignore(g => g.Members);
         }
 
         private void SetUpGroupMembersTable(ModelBuilder modelBuilder)
