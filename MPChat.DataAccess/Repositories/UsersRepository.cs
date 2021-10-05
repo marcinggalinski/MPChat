@@ -1,11 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MPChat.DataAccess.DbContexts;
+using MPChat.DataAccess.Repositories.Abstract;
 using MPChat.Types.Models;
 using System.Linq;
 
 namespace MPChat.DataAccess.Repositories
 {
-    public class UsersRepository : IRepository<User>
+    public class UsersRepository : IUsersRepository
     {
         private readonly SqlServerDbContext _dbContext;
 
@@ -14,7 +15,7 @@ namespace MPChat.DataAccess.Repositories
             _dbContext = dbContext;
         }
         
-        public User Get(int id)
+        public User GetById(int id)
         {
             var user = _dbContext.Users
                 .Where(u => u.Id == id)
@@ -51,6 +52,21 @@ namespace MPChat.DataAccess.Repositories
             _dbContext.SaveChanges();
             
             return result;
+        }
+
+        public User GetByEmailAddress(string emailAddress)
+        {
+            var user = _dbContext.Users
+                .Where(u => u.EmailAddress == emailAddress)
+                .Include(u => u.GroupMembers)
+                .ThenInclude(gm => gm.Group)
+                .SingleOrDefault();
+            if (user is null)
+                return null;
+
+            user.Groups = user.GroupMembers.Select(gm => gm.Group);
+
+            return user;
         }
     }
 }

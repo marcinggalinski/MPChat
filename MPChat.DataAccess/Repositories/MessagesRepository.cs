@@ -1,4 +1,5 @@
 ﻿using MPChat.DataAccess.DbContexts;
+using MPChat.DataAccess.Repositories.Abstract;
 using MPChat.Types.Models;
 using System.Linq;
 
@@ -13,7 +14,7 @@ namespace MPChat.DataAccess.Repositories
             _dbContext = dbContext;
         }
 
-        public Message Get(int id)
+        public Message GetById(int id)
         {
             var message = _dbContext.Messages.SingleOrDefault(m => m.Id == id);
             if (message is null)
