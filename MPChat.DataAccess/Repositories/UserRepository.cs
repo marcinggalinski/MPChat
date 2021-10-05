@@ -14,7 +14,22 @@ namespace MPChat.DataAccess.Repositories
         {
             _dbContext = dbContext;
         }
-        
+
+        public User GetByEmailAddress(string emailAddress)
+        {
+            var user = _dbContext.Users
+                .Where(u => u.EmailAddress == emailAddress)
+                .Include(u => u.GroupMembers)
+                .ThenInclude(gm => gm.Group)
+                .SingleOrDefault();
+            if (user is null)
+                return null;
+
+            user.Groups = user.GroupMembers.Select(gm => gm.Group);
+
+            return user;
+        }
+
         public User GetById(int id)
         {
             var user = _dbContext.Users
@@ -32,40 +47,25 @@ namespace MPChat.DataAccess.Repositories
 
         public User Add(User entity)
         {
-            var result = _dbContext.Users.Add(entity).Entity;
+            var user = _dbContext.Users.Add(entity).Entity;
             _dbContext.SaveChanges();
 
-            return result;
+            return user;
         }
 
         public User Update(User entity)
         {
-            var result = _dbContext.Users.Update(entity).Entity;
+            var user = _dbContext.Users.Update(entity).Entity;
             _dbContext.SaveChanges();
             
-            return result;
+            return user;
         }
 
         public User Delete(User entity)
         {
-            var result = _dbContext.Users.Remove(entity).Entity;
+            var user = _dbContext.Users.Remove(entity).Entity;
             _dbContext.SaveChanges();
             
-            return result;
-        }
-
-        public User GetByEmailAddress(string emailAddress)
-        {
-            var user = _dbContext.Users
-                .Where(u => u.EmailAddress == emailAddress)
-                .Include(u => u.GroupMembers)
-                .ThenInclude(gm => gm.Group)
-                .SingleOrDefault();
-            if (user is null)
-                return null;
-
-            user.Groups = user.GroupMembers.Select(gm => gm.Group);
-
             return user;
         }
     }

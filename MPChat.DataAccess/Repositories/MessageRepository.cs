@@ -34,29 +34,29 @@ namespace MPChat.DataAccess.Repositories
 
         public Message Add(Message entity)
         {
-            var result = _dbContext.Messages.Add(entity)
+            var message = _dbContext.Messages.Add(entity)
                 .Entity;
             _dbContext.SaveChanges();
 
-            return result;
+            return message;
         }
 
         public Message Update(Message entity)
         {
-            var result = _dbContext.Messages.Update(entity)
+            var message = _dbContext.Messages.Update(entity)
                 .Entity;
             _dbContext.SaveChanges();
 
-            return result;
+            return message;
         }
 
         public Message Delete(Message entity)
         {
-            var result = _dbContext.Messages.Remove(entity)
+            var message = _dbContext.Messages.Remove(entity)
                 .Entity;
             _dbContext.SaveChanges();
 
-            return result;
+            return message;
         }
     }
 }
