@@ -6,11 +6,11 @@ using System.Linq;
 
 namespace MPChat.DataAccess.Repositories
 {
-    public class UsersRepository : IUsersRepository
+    public class UserRepository : IUserRepository
     {
         private readonly SqlServerDbContext _dbContext;
 
-        public UsersRepository(SqlServerDbContext dbContext)
+        public UserRepository(SqlServerDbContext dbContext)
         {
             _dbContext = dbContext;
         }

@@ -2,7 +2,7 @@
 
 namespace MPChat.DataAccess.Repositories.Abstract
 {
-    public interface IUsersRepository : IRepository<User>
+    public interface IUserRepository : IRepository<User>
     {
         User GetByEmailAddress(string emailAddress);
     }
